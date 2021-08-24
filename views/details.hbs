@@ -1,0 +1,52 @@
+<main>
+    {{#with house}}
+
+    <section id="deatils-page">
+        <div class="wrapper">
+            <div class="product-img">
+                <img src="{{imageUrl}}" />
+            </div>
+            <div class="product-info">
+                <div class="product-text">
+                    <div class="product-text">
+                        <h1>Name: {{name}}</h1>
+                        <h2>Type: {{type}}</h2>
+                        <h4>Year: {{year}}</h4>
+                        <h4>City: {{city}}</h4>
+                        <p>Description: {{description}}</p>
+
+                        {{#if renters}}
+                            <p>People rented this housing: {{people}}</p>
+                                {{else}}
+                            <p>There are no tenants yet.</p>
+                        {{/if}}
+                    </div>
+                </div>
+                        {{#if hasUser}}
+                        <div class="product-btn">
+
+                            {{#if isOwner}}
+                            <a href="/house/edit/{{_id}}" class="edit">Edit</a>
+                            <a href="/house/delete/{{_id}}" class="remove">Delete</a>
+                            {{/if}}
+                        
+
+                            {{#if tenant}}
+                                <p class="alRentHome">You have already rented this home</p>
+                            {{/if}}
+
+                            {{#if unavailability}}
+                                <p class="no-housing">No Housing Available!</p>
+                            {{/if}} 
+                                
+                            {{#if availability}}
+                                 <a href="/house/rent/{{_id}}" class="rentHome">Rent a home, available {{piecesAvailable}} housing</a>
+                            {{/if}}
+
+                        </div>
+                        {{/if}}
+                    </div>
+                </div>
+            </section>
+    {{/with}}
+</main>
